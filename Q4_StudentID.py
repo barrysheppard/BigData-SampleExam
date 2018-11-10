@@ -72,3 +72,28 @@ print(list(My_Calc.triple([1,2,3])))
 # Note if you're using python3 which we are and a reduce function you need
 # to use the following.
 from functools import reduce
+
+# Example of gnerator
+def generate_cities():
+    yield 'London'
+    yield 'Dublin'
+    yield 'Manchester'
+
+# If we print them as a list print everything
+print(list(generate_cities()))
+
+# If we print them in a for loop it will let us do something to each
+for cities in generate_cities():
+    print(cities)
+
+# With a function, we can keep calling it and it will remember where we were
+def quadruple(data):
+    for value in data:
+        yield value**4
+
+# Here we feed in 3 numbers.
+quad_generator = quadruple([1,2,3])
+print(next(quad_generator))
+print(next(quad_generator))
+print(next(quad_generator))
+# If we called it a 4th time we would get an error as there is only 3 items
